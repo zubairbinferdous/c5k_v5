@@ -1,0 +1,170 @@
+<title>{{ $journal->title ?? 'Default Title' }}</title>
+@include('layout.header')
+<style>
+/* .nav-item-bottom.dropdown:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+.dropdown-menu {
+    background-color: #fff; 
+    transition: all 0.3s ease;
+}
+
+
+.dropdown-item:hover {
+    background-color: rgba(255, 255, 255, 0.2); 
+    color: #023569;
+}
+form {
+  max-width: 100%;
+}
+input.form-control {
+  border-radius: 0.25rem;
+}
+button {
+  border-radius: 0.25rem;
+} */
+</style>
+<body>
+@include('pages.page_header_nav')
+<section>
+    <div class="container pb-5" style="background-color: #E2F1FB;">
+      <h1 class=" pt-3">About the journal</h1>
+      <p class="mt-4 mb-3"> 
+      {!! str_limit(strip_tags($journal->aim_scope), 400, ' ...') !!}           
+                </p>
+        <a href="#" class="mb-5" data-toggle="modal" data-target="#aimsModal">View full aims & scope</a>
+    </div>
+  </section>
+  <section class="mb-2">
+    
+  </section>
+  <section>
+    <div class="container" id="journal-over-view">
+      <div class="row mt-3  d-flex justify-content-between" style="border-bottom: 1px solid #E4E4E4;">
+        <h1 class="pl-3">Journal Insights</h1>
+      </div>
+       <div class="row pb-3" style="border-bottom: 1px solid #E4E4E4;">
+        <div class="col-md-3 col-lg-3 col-sm-6">
+          <h5 class="mt-4 ">Aims & Scope</h5>
+        </div>
+        <div class="col-md-9 col-lg-9 col-sm-6"><p class="mt-4 mb-3">{!! str_limit(strip_tags($journal->aim_scope), 200, ' ...') !!}   </p>
+          <a href="#" class="mb-5" data-toggle="modal" data-target="#aimsModal">View full aims & scope</a></div>
+      </div>
+      <div class="row pb-3" style="border-bottom: 1px solid #E4E4E4;">
+        <div class="col-md-3 col-lg-3 col-sm-6">
+          <h5 class="mt-4 ">ISSN</h5>
+        </div>
+        <div class="col-md-9 col-lg-9 col-sm-6"><h6 class="mt-4 mb-3">Online ISSN : XXX-YYY</h6></div>
+      </div>
+
+      <div class="row pb-3" style="border-bottom: 1px solid #E4E4E4;">
+        <div class="col-md-3 col-lg-3 col-sm-6">
+          <h5 class="mt-4 ">Subject Areas</h5>
+        </div>
+        <div class="col-md-9 col-lg-9 col-sm-6"><p class="mt-4 mb-3">{!! strip_tags($journal->subject_area) !!}
+</p></div>
+      </div>
+
+      <div class="row pb-3" style="border-bottom: 1px solid #E4E4E4;">
+        <div class="col-md-3 col-lg-3 col-sm-6">
+          <h5 class="mt-4">Article publishing charge</h5>
+        </div>
+        <div class="col-md-9 col-lg-9 col-sm-6">
+          <h4 class="mt-4 "><i><b>$500
+          </b></i></h4>
+          <h6 class="mb-2">Article publishing charge for open access</h6>
+          <p class="mb-3">{!! strip_tags($journal->article_charge) !!}</p>
+        </div>
+      </div>
+
+      <div class="row pb-3" style="border-bottom: 1px solid #E4E4E4;">
+        <div class="col-md-3 col-lg-3 col-sm-6">
+          <h5 class="mt-4">Publishing timeline</h5>
+        </div>
+        <div class="col-md-9 col-lg-9 col-sm-6">
+          <div class="d-flex flex-wrap justify-content-between align-items-center">
+            <!-- Time to first decision -->
+            <div class="text-center px-3 border-end">
+              <h4 class="mt-4"><i><b>4 days</b></i></h4>
+              <h6>Time to first decision</h6>
+            </div>
+            <!-- Review time -->
+            <div class="text-center px-3 border-end">
+              <h4 class="mt-4"><i><b>21 days</b></i></h4>
+              <h6>Review time</h6>
+            </div>
+            <!-- Revision time -->
+            <div class="text-center px-3 border-end">
+              <h4 class="mt-4"><i><b>15 days</b></i></h4>
+              <h6>Revision time</h6>
+            </div>
+            <!-- Submission to Acceptance -->
+            <div class="text-center px-3 border-end">
+              <h4 class="mt-4"><i><b>40 days</b></i></h4>
+              <h6>Submission to Acceptance</h6>
+            </div>
+            <!-- Acceptance to publication -->
+            <div class="text-center px-3">
+              <h4 class="mt-4"><i><b>7 days</b></i></h4>
+              <h6>Acceptance to publication</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+      
+
+      <div class="row pb-3">
+        <div class="col-md-3 col-lg-3 col-sm-6">
+          <h5 class="mt-4">Abstracting and indexing</h5>
+        </div>
+        <div class="d-flex align-items-center col-md-9 col-lg-9 col-sm-6">
+          <h6><ul class="mt-3"></ul>
+            <li>Google Scholar</li>
+            <li>Directory of Open Access Journals (DOAJ)</li>
+          </ul></h6>
+        </div>        
+      </div>
+    </div>    
+  </section>
+
+ 
+  <!-- Modal -->
+<div class="modal fade" id="aimsModal" tabindex="-1" role="dialog" aria-labelledby="aimsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="aimsModalLabel">{{$journal->title}}
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- The content you want to show -->
+        <!-- Aims and Scope Section -->
+<div class="aims-scope-section">
+<h2><b>Aim and Scope</b></h2>
+  <p> {!! $journal->aim_scope !!}</p>
+</div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+@include('layout.footer_nav')
+@include('layout.footer')
+@include('layout.js')
+
+</body>
+
+</html>

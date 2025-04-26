@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Section</title>
+    <link href="https://fonts.googleapis.com/css2?family=Georgia:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: Georgia, serif;
+        }
+
+        .book-section .book-card {
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            font-family: Georgia, serif;
+        }
+
+        .book-section .book-card img {
+            max-height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .book-section .book-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .book-section .book-card:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .book-section .book-card .details-btn {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: none;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .book-section .book-card:hover .details-btn {
+            display: inline-block;
+        }
+
+        .book-section .book-card .details-btn:hover {
+            background-color: #0056b3;
+        }
+        .common-font{
+            font-family: 'Merriweather', 'Times New Roman', Georgia, Garamond, serif;
+        }
+    </style>
+</head>
+<body>
+
+@include('layout.header')
+@section('content')
+<div class="container py-5">
+    <div class="row">
+        <!-- Book Cover -->
+        <div class="col-md-4">
+            <img src="{{ asset('public/backend/books/' . $book->book_img) }}" alt="{{ $book->name }}"  class="img-fluid rounded">
+        </div>
+
+        <!-- Book Details -->
+        <div class="col-md-8 common-font" style="margin-top:-12px">
+            <h1 class="fw-bold"  style="font-family: Georgia, serif">{{ $book->name }}</h1>
+            <p class=""><strong>Authors:</strong> {{ $book->authors ?? 'N/A' }}</p>
+<p><strong>Category:</strong> {{ $book->category_name }}</p>
+<p><strong>First Published:</strong> {{ \Carbon\Carbon::parse($book->published_date)->format('d-m-Y') }}</p>
+            <p class="text-primary"><strong>DOI:</strong> {{ $book->doi }}</p>
+            <p class="text-primary"><strong>Copyright</strong> &copy; {{ $book->copyright ?? '&copy; C5K Research Publishing' }}</p>
+
+            <!-- Action Buttons -->
+            <div class="mt-3  row" style="margin-left:1px;">
+                <a href="#" class="btn  py-4 me-2 col-3" style="background-color: RGB(250, 244, 0); font-family: Georgia, serif; font-size:20px;font-weight:600; ">Buy this Book</a>
+                <a href="#" class="btn  py-4 col-3 text-white" style="background-color:RGB(0, 154, 203) ;font-size:20px;font-weight:600;">Cite</a>
+                <a href="#" class="btn  py-4 me-2 col-3" style="background-color: RGB(250, 244, 0);font-size:20px;font-weight:600;">Contact Us</a>
+            </div>
+        </div>
+    </div>
+
+ <div class="row d-flex justify-content-start commont-font">
+    <div class="my-4 col-md-4 d-flex justify-content-start">
+        <div class="card w-100">
+            <div class="card-header fw-bold text-center text-white" style="background-color:RGB(0, 154, 203)">
+                <strong>Book Specifications</strong>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-bordered mb-0 w-100">
+                        <tbody>
+                            <!--<tr>-->
+                            <!--    <th scope="row" class="bg-light" style="font-size:18px;">Authors</th>-->
+                            <!--    <td>{{ $book->authors ?? 'N/A' }}</td>-->
+                            <!--</tr>-->
+                            <tr>
+                                <th scope="row" class="bg-light" style="font-size:18px;">First Publish</th>
+                                <td>{{ \Carbon\Carbon::parse($book->published_date)->format('d-m-Y') ?? 'N/A' }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="bg-light" style="font-size:18px;">Print ISBN</th>
+                                <td>{{ $book->first_isbn ?? 'N/A' }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="bg-light" style="font-size:18px;">Online ISBN</th>
+                                <td>{{ $book->online_isbn ?? 'N/A' }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="bg-light" style="font-size:18px;">DOI</th>
+                                <td class="text-primary">{{ $book->doi ?? 'N/A' }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="bg-light" style="font-size:18px;">Item Weight</th>
+                                <td>{{ $book->items_weight ?? 'N/A' }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="bg-light" style="font-size:18px;">Dimensions</th>
+                                <td>{{ $book->dimention ?? 'N/A' }}</td>
+                            </tr>
+                         
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class=" my-4" style="font-family: Georgia, serif;">
+    <h4 class="fw-bold" style="font-weight:600 font-size:28px">Table of Contents</h4>
+    <hr>
+
+    <!-- Free Access Section -->
+    @foreach($forntMatter as $front)
+
+    <div class="mb-3">
+        <span class="text-warning fw-bold"><i class="bi bi-unlock"></i> Free Access</span><br>
+        <a href="#" class="fw-bold text-decoration-none text-dark" style="font-size:18px">
+                Front Matter (Pages: {{ $front->pages_range }})
+        </a>
+        <div class="mt-1">
+            <a href="#" class="me-3 text-decoration-none mr-3 text-primary" style="font-size:18px">Summary</a>
+            <a href="{{ url('pdf_view') }}?file={{ $front->pdf_url }}" 
+            style="font-size:18px" 
+            class="me-3 text-decoration-none text-primary">PDF</a>
+        </div>
+    </div>
+    <hr>
+    @endforeach
+
+    <!-- Chapters Section -->
+   <!-- PDF Viewer Modal -->
+<div class="modal fade" id="pdfViewerModal" tabindex="-1" aria-labelledby="pdfViewerLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="pdfViewerLabel">PDF Viewer</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <iframe id="pdfViewer" src="" width="100%" height="600px" style="border: none;"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Chapters Section -->
+@foreach($chapters as $chapter)
+    <div class="mb-3">
+        <p class="mb-1 fw-bold text-uppercase" style="font-size:20px">Chapter {{ $loop->iteration }}</p>
+        <a href="#" class="fw-bold text-decoration-none text-dark" style="font-size:18px">
+            {{ $chapter->title }} (Pages: {{ $chapter->page_range }})
+        </a>
+        <div class="mt-1">
+            <a href="#" class="me-3 text-decoration-none text-primary" style="font-size:18px">Summary</a>
+            <a href="javascript:void(0);" 
+               {{-- onclick="showPdf('{{ $chapter->pdf_url }}')"  --}}
+               onclick="showPdf('{{ asset('public/chapters/' . $chapter->pdf_url) }}')" 
+
+               style="font-size:18px" 
+               class="me-3 text-decoration-none text-primary">PDF</a>
+        </div>
+    </div>
+    <hr>
+@endforeach
+
+
+      
+
+        <!-- Purchase Section -->
+        <div class="container border rounded p-3 shadow-sm">
+            <div class="text-center  shadow p-2 " style="font-weight:600;background:#F0F8FF">
+                <h1 class="text-primary text-center">Purchase This Book</h1>
+            </div>
+            <div class="row mt-3 border-top pt-3">
+                <div class="col-4 text-center border rounded p-2" style="background-color: RGB(250, 244, 0)">
+                    <p class="mb-1" style="font-size:24px;font-weight:600" >Ebook</p>
+                    <p> <span class="fw-bold" style="font-size:22px">from ${{ $book->price ?? 'N/A' }}</span></p>
+                </div>
+                <div class="col-4 text-center border rounded text-white p-2" style="background-color:RGB(0, 154, 203)">
+                    <p class="mb-1" style="font-size:24px;font-weight:600">Paper Back</p>
+                    <p class="fw-bold"style="font-size:22px" >from ${{ $book->hard_cover ?? 'N/A' }}</p>
+                </div>
+                <div class="col-4 text-center border rounded text-black p-2" style="background-color: RGB(250, 244, 0)">
+                    <p class="mb-1" style="font-size:24px;font-weight:600">Hard Back</p>
+                    <p> <span class="fw-bold" style="font-size:22px">from ${{ $book->paper_book ?? 'N/A' }}</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@include('layout.footer_nav')
+@include('layout.footer')
+@include('layout.js')

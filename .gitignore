@@ -1,0 +1,9 @@
+
+# Ignore files
+node_modules/
+vendor/
+*.log
+*.env
+.DS_Store
+public
+.zip
