@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Admin\ArticleHtmlController;
+use App\Http\Controllers\Admin\BooksCategoryController;
+use App\Http\Controllers\Admin\BookListController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -218,6 +220,12 @@ Route::group(['prefix' => 'dashboard/admin', 'middleware' => ['auth', 'isAdmin',
 
     // Article HTML
     Route::resource('article-html', ArticleHtmlController::class);
+
+    // Books Category
+    Route::resource('books-category', BooksCategoryController::class)->names('books.category');
+
+    // Books List
+    Route::resource('book-list', BookListController::class)->names('book.list');
 
     // Other Routes
     Route::resource('requirement', 'Admin\RequirementController');

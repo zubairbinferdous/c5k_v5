@@ -34,6 +34,11 @@
         <link href="{{ asset('public/backend/css/vendor/switchery.min.css') }}" rel="stylesheet" type="text/css" />
         <!-- third party css end -->
 
+         <!-- Sweet Alert Message -->
+         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+         <!-- toaster css plugin -->
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
         <link href="{{ asset('public/backend/css/app.css') }}" rel="stylesheet" type="text/css" />
 
@@ -211,6 +216,11 @@
         <script src="{{ asset('public/backend/js/all.min.js') }}"></script>
         <script src="{{ asset('public/backend/js/summernote-bs4.js') }}"></script>
 
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+
+        <!-- toaster Js plugins  -->
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
 
         <!-- third party js -->
         <script src="{{ asset('public/backend/js/vendor/jquery.dataTables.js') }}"></script>
@@ -224,5 +234,24 @@
 
 
         @stack('add-js')
+
+        {!! Toastr::message() !!}
+
+        <script type="text/javascript">
+
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    toastr.error("{!! $error !!}");
+                @endforeach
+            @endif
+        </script>
+
+        <script>
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+        </script>
     </body>
 </html>

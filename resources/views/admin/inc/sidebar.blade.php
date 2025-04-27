@@ -44,6 +44,20 @@
         </li>
 
         <li>
+            <a href="javascript: void(0);">
+                <span class="icon"><i class="fas fa-newspaper"></i></span>
+                <span> Books </span>
+                <span class="menu-arrow"></span>
+            </a>
+            <ul class="nav-second-level" aria-expanded="false">
+                <li>
+                    <a href="{{ URL::route('books.category.index') }}">Books Category</a>
+                    <a href="{{ URL::route('book.list.index') }}">Books List</a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
             <a href="{{ URL::route('article-category.index') }}">
                 <span class="icon"><i class="fas fa-align-justify"></i></span>
                 <span> Article Category </span>
