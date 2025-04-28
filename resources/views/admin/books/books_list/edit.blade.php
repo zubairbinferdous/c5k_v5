@@ -104,6 +104,9 @@
         .modal-body {
             text-align: normal !important;
         }
+        .note-editor.note-frame .note-editing-area .note-editable{
+            height: 400px !important;
+        }
     </style>
 @endpush
 
@@ -154,7 +157,7 @@
                                 <div class="multiple-image">
                                     <label class="file_div" for="fileUploader" id="image_preview" style="padding: 20px;">
                                         @if ( !empty($bookList->book_img) )
-                                            <img src="{{ asset($bookList->book_img) }}" alt=""  style="max-width: 100px; margin: 0 auto; display: block;">
+                                            <img src="{{ asset('public/backend/books/' .$bookList->book_img) }}" alt=""  style="max-width: 100px; margin: 0 auto; display: block;">
                                         @else
                                             <img src="{{ asset('public/backend/images/Upload_icon.png') }}" alt="" class="img_upload" />
                                             <h3>Upload Files or <span>Browse</span></h3>

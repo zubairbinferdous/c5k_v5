@@ -92,7 +92,7 @@ class BookListController extends Controller
                 $imageName   = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
                 $imagePath    = 'public/backend/books/';
                 $image->move($imagePath, $imageName);
-                $bookList->book_img = $imagePath . $imageName;
+                $bookList->book_img = $imageName;
             }
             
             $bookList->created_at = now();
@@ -202,7 +202,7 @@ class BookListController extends Controller
                 $imageName   = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
                 $imagePath    = 'public/backend/books/';
                 $image->move($imagePath, $imageName);
-                $bookList->book_img = $imagePath . $imageName;
+                $bookList->book_img = $imageName;
             }
             
             $bookList->created_at = now();
