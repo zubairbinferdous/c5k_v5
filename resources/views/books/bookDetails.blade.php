@@ -105,6 +105,14 @@
         @endforeach
     </div>
 
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+                {!! $book->description !!}
+            </div>
+        </div>
+    </div>
+
     <!-- Purchase Section -->
     <div class="mt-10 border rounded p-6 shadow-sm bg-white">
         <div class="text-center shadow p-4 bg-blue-50 font-bold">
