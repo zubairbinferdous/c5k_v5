@@ -45,7 +45,7 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="{{ asset('frontend/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/frontend/css/custom.css') }}">
     @stack('add-css')
 
 
@@ -110,7 +110,7 @@
                 <!-- Left: Logo -->
                 <div class="logo_area">
                     <a href="{{ route('home') }}">
-                        <img src="{{ asset('backend/logo/logo.png') }}" alt="logo">
+                        <img src="{{ asset('public/backend/logo/logo.png') }}" alt="logo">
                     </a>
                 </div>
 
