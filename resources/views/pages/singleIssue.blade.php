@@ -267,8 +267,8 @@
                     </div>
 
                     <div class="custom-link mb-3">
-                        <a href="#">
-                            https://doi.org/10.103/xxx
+                        <a href="{{ $issuDetails->doi }}" target="_blank">
+                            {{ $issuDetails->doi }}
                         </a>
                     </div>
 

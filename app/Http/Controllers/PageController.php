@@ -39,6 +39,7 @@ class PageController extends Controller
             ->join('journal_articals', 'volume.journal_id', '=', 'journal_articals.id')
             ->select(
                 'articles.id',
+                'articles.doi',
                 'articles.title as article_title',
                 'articles.description',
                 'journal_articals.id as journal_idd',
@@ -106,7 +107,7 @@ class PageController extends Controller
             ->join('journal_articals as ja', 'v.journal_id', '=', 'ja.id')
             ->where('ja.id', $id)
             ->where('v.id', $volumeId)
-            ->select('v.*', 'a.file_path as pdf_file', 'a.title as articles_title', 'a.article_html', 'a.id as issu_no', 'a.author_name as author', 'a.submited_date as date', 'a.online_first as online', 'a.paper_id as paper')
+            ->select('v.*', 'a.file_path as pdf_file', 'a.title as articles_title', 'a.article_html', 'a.id as issu_no', 'a.author_name as author', 'a.submited_date as date', 'a.online_first as online', 'a.paper_id as paper', 'a.doi')
             ->get();
 
         return view('pages.current_issue_list', compact('journal', 'volume_list_issue'));
@@ -127,7 +128,7 @@ class PageController extends Controller
         $relatedIssues = DB::table('articles')
             ->where('volume_id', $volumeId)
             ->where('id', '!=', $issueId)
-            ->select('id', 'title', 'created_at')
+            ->select('id', 'title', 'doi', 'created_at')
             ->limit(3)
             ->get();
 
@@ -202,7 +203,7 @@ class PageController extends Controller
         $relatedIssues = DB::table('articles')
             ->where('volume_id', $volumeId)
             ->where('id', '!=', $issueId)
-            ->select('id', 'title', 'created_at')
+            ->select('id', 'title', 'doi', 'created_at')
             ->limit(3)
             ->get();
         // Fetch authors and affiliations

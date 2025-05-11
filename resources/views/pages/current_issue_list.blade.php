@@ -39,7 +39,7 @@
                                     <strong>{{ $journal->title }}</strong>
                                 </div>
                                 <a href="#" class="text-blue-700 text-sm font-serif hover:underline">
-                                    https://doi.org/10.103/xxx
+                                    {{ $issue->doi }}
                                 </a>
                             </div>
 
