@@ -52,7 +52,7 @@
                                         <p class="mb-1">First published Online:
                                             <span>{{ \Carbon\Carbon::parse($issue->online_first)->format('d F, Y') }}</span>
                                         </p>
-                                        <p class="text-blue-600 mb-3">https://doi.org/10.103/xxx</p>
+                                        <p class="text-blue-600 mb-3">{{ $issue->doi }}</p>
                                         <div class="flex gap-4 justify-end">
                                             @if (!empty($issue->file_path))
                                                 <a href="{{ route('download_pdf', ['file' => $issue->file_path]) }}"

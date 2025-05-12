@@ -303,7 +303,7 @@
             <div class="text-center md:text-left">
                 <h2 class="text-2xl font-normal text-black-500 mb-6">Stay up to date</h2>
                 <div class="flex justify-center md:justify-start space-x-4">
-                    <a href="#"
+                    <a href="https://web.facebook.com/c5kpub" target="_blank"
                         class="w-12 h-12 flex items-center justify-center rounded-full bg-blue-700 text-white text-xl shadow-md hover:scale-110 transition-transform"><i
                             class="fab fa-facebook-f"></i></a>
                     <a href="#"

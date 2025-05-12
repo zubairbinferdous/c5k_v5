@@ -131,7 +131,7 @@
 
                 <!-- Right: Social Icons -->
                 <div class="flex items-center space-x-4">
-                    <a href="#" class="text-[#007C92] text-xl"><i class="fab fa-facebook"></i></a>
+                    <a href="https://web.facebook.com/c5kpub" target="_blank" class="text-[#007C92] text-xl"><i class="fab fa-facebook"></i></a>
                     <a href="#" class="text-[#007C92] text-xl"><i class="fab fa-twitter"></i></a>
                     <!-- Fixed typo -->
                     <a href="#" class="text-[#007C92] text-xl"><i class="fab fa-instagram"></i></a>
