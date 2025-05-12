@@ -1,57 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-        <meta charset="utf-8" />
+    <meta charset="utf-8" />
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="Coderthemes" name="author" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Coderthemes" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-        @foreach( $settings as $setting )
+    @foreach ($settings as $setting)
         <!-- App Title -->
         <title>@yield('title') | {{ $setting->title }}</title>
 
         <!-- App favicon -->
-        <link rel="shortcut icon" href="{{ asset('uploads/setting/'.$setting->favicon_path) }}">
-        @endforeach
+        <link rel="shortcut icon" href="{{ asset('uploads/setting/' . $setting->favicon_path) }}">
+    @endforeach
 
-        @if(empty($setting))
+    @if (empty($setting))
         <!-- App Title -->
         <title>@yield('title')</title>
-        @endif
+    @endif
 
-        <!-- App css -->
-        {{-- <link href="{{ asset('publicbackend/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" /> --}}
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- App css -->
+    {{-- <link href="{{ asset('publicbackend/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" /> --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
-        <link href="{{ asset('publicbackend/css/all.min.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('publicbackend/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('publicbackend/css/summernote-bs4.css') }}" rel="stylesheet" type="text/css" />
-        
+    <link href="{{ asset('publicbackend/css/all.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('publicbackend/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('publicbackend/css/summernote-bs4.css') }}" rel="stylesheet" type="text/css" />
 
-        <!-- third party css -->
-        <link href="{{ asset('publicbackend/css/vendor/dataTables.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('publicbackend/css/vendor/switchery.min.css') }}" rel="stylesheet" type="text/css" />
-        <!-- third party css end -->
 
-         <!-- Sweet Alert Message -->
-         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- third party css -->
+    <link href="{{ asset('publicbackend/css/vendor/dataTables.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('publicbackend/css/vendor/switchery.min.css') }}" rel="stylesheet" type="text/css" />
+    <!-- third party css end -->
 
-         <!-- toaster css plugin -->
-         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <!-- Sweet Alert Message -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-        <link href="{{ asset('publicbackend/css/app.css') }}" rel="stylesheet" type="text/css" />
+    <!-- toaster css plugin -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
-        @stack('add-css')
+    <link href="{{ asset('publicbackend/css/app.css') }}" rel="stylesheet" type="text/css" />
 
-    </head>
+    @stack('add-css')
 
-    <body>
+</head>
 
-        <!-- Begin page -->
-        <div id="wrapper">
-            
-            @auth
+<body>
+
+    <!-- Begin page -->
+    <div id="wrapper">
+
+        @auth
             <!-- ========== Left Sidebar Start ========== -->
             <div class="left-side-menu left-side-menu-dark">
 
@@ -59,13 +61,13 @@
 
                     <!-- LOGO -->
                     <a href="{{ URL::route('dashboard.index') }}" class="logo text-center mb-4">
-                       <h1>Dashboard</h1>
+                        <h1>Dashboard</h1>
                     </a>
 
-                    @if(Request::is('dashboard*'))
-                    <!--- Sidemenu -->
-                    @include('admin.inc.sidebar')
-                    <!-- End Sidebar -->
+                    @if (Request::is('dashboard*'))
+                        <!--- Sidemenu -->
+                        @include('admin.inc.sidebar')
+                        <!-- End Sidebar -->
                     @endif
 
                     <div class="clearfix"></div>
@@ -75,38 +77,41 @@
 
             </div>
             <!-- Left Sidebar End -->
-            @endauth
+        @endauth
 
 
-            <!-- ============================================================== -->
-            <!-- Start Page Content here -->
-            <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Start Page Content here -->
+        <!-- ============================================================== -->
 
-            <div class="@auth content-page @else container-fluid  @endauth">
-                <div class="content">
+        <div class="@auth content-page @else container-fluid @endauth">
+            <div class="content">
 
-                    <!-- Topbar Start -->
-                    <div class="navbar-custom">
-                        <ul class="list-unstyled topbar-right-menu float-right mb-0">
+                <!-- Topbar Start -->
+                <div class="navbar-custom">
+                    <ul class="list-unstyled topbar-right-menu float-right mb-0">
 
-                            <!-- Authentication Links -->
-                            @guest
+                        <!-- Authentication Links -->
+                        @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                            @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
-                                @if (Route::has('register'))
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                    </li>
-                                @endif
-                            @else
-
+                            @endif
+                        @else
                             <li class="dropdown notification-list">
-                                <a class="nav-link dropdown-toggle nav-user mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                    @if(isset(Auth::user()->image_path))
-                                    <img src="{{ asset('public/uploads/profile/'.Auth::user()->image_path) }}" onerror="this.onerror=null;this.src='/backend/images/users/user.png';" alt="user-image" class="rounded-circle">
+                                <a class="nav-link dropdown-toggle nav-user mr-0" data-toggle="dropdown" href="#"
+                                    role="button" aria-haspopup="false" aria-expanded="false">
+                                    @if (isset(Auth::user()->image_path))
+                                        <img src="{{ asset('public/uploads/profile/' . Auth::user()->image_path) }}"
+                                            onerror="this.onerror=null;this.src='/backend/images/users/user.png';"
+                                            alt="user-image" class="rounded-circle">
                                     @else
-                                    <img src="{{ asset('/backend/images/users/user.png') }}" alt="user-image" class="rounded-circle">
+                                        <img src="{{ asset('/backend/images/users/user.png') }}" alt="user-image"
+                                            class="rounded-circle">
                                     @endif
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown ">
@@ -121,44 +126,45 @@
 
                                     <!-- item-->
                                     <!-- <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <i class="fe-user"></i>
-                                        <span>My Account</span>
-                                    </a> -->
+                                                        <i class="fe-user"></i>
+                                                        <span>My Account</span>
+                                                    </a> -->
 
                                     @can('isAdmin')
-                                    <!-- item-->
-                                    <a href="{{ URL::route('setting.index') }}" class="dropdown-item notify-item">
-                                        <i class="fe-settings"></i>
-                                        <span>Settings</span>
-                                    </a>
+                                        <!-- item-->
+                                        <a href="{{ URL::route('setting.index') }}" class="dropdown-item notify-item">
+                                            <i class="fe-settings"></i>
+                                            <span>Settings</span>
+                                        </a>
                                     @endcan
 
                                     <div class="dropdown-divider"></div>
 
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
+                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        
+
                                         <i class="fe-log-out"></i>
                                         <span>Logout</span>
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        style="display: none;">
                                         @csrf
                                     </form>
 
                                 </div>
                             </li>
 
-                            @endguest
+                        @endguest
 
-                        </ul>
-                        <button class="button-menu-mobile open-left disable-btn">
-                            <i class="fe-menu"></i>
-                        </button>
-                        <div class="app-search">
-                            <!-- <form>
+                    </ul>
+                    <button class="button-menu-mobile open-left disable-btn">
+                        <i class="fe-menu"></i>
+                    </button>
+                    <div class="app-search">
+                        <!-- <form>
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Search...">
                                     <div class="input-group-append">
@@ -168,90 +174,92 @@
                                     </div>
                                 </div>
                             </form> -->
-                        </div>
                     </div>
-                    <!-- end Topbar -->
+                </div>
+                <!-- end Topbar -->
 
 
-                    <!-- Start Content-->
-                    @yield('content')
-                    <!-- End Content-->
-                    
+                <!-- Start Content-->
+                @yield('content')
+                <!-- End Content-->
 
 
-                </div> <!-- content -->
 
-                <!-- Footer Start -->
-                <footer class="footer">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-6">
-                                @if(isset($setting))
+            </div> <!-- content -->
+
+            <!-- Footer Start -->
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6">
+                            @if (isset($setting))
                                 Admin &copy; - {{ $setting->title }}
-                                @endif
-                            </div>
-                            <div class="col-md-6">
-                                <div class="text-md-right footer-links d-none d-sm-block">
-                                    <a href="{{ URL('/') }}">Home</a>
-                                </div>
+                            @endif
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-md-right footer-links d-none d-sm-block">
+                                <a href="{{ URL('/') }}">Home</a>
                             </div>
                         </div>
                     </div>
-                </footer>
-                <!-- end Footer -->
-
-            </div>
-
-            <!-- ============================================================== -->
-            <!-- End Page content -->
-            <!-- ============================================================== -->
-
+                </div>
+            </footer>
+            <!-- end Footer -->
 
         </div>
-        <!-- END wrapper -->
+
+        <!-- ============================================================== -->
+        <!-- End Page content -->
+        <!-- ============================================================== -->
 
 
-        <!-- App js -->
-        <script src="{{ asset('public/backend/js/vendor.min.js') }}"></script>
-        <script src="{{ asset('public/backend/js/all.min.js') }}"></script>
-        <script src="{{ asset('public/backend/js/summernote-bs4.js') }}"></script>
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
-
-        <!-- toaster Js plugins  -->
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    </div>
+    <!-- END wrapper -->
 
 
-        <!-- third party js -->
-        <script src="{{ asset('public/backend/js/vendor/jquery.dataTables.js') }}"></script>
-        <script src="{{ asset('public/backend/js/vendor/dataTables.bootstrap4.js') }}"></script>
-        <script src="{{ asset('public/backend/js/vendor/switchery.min.js') }}"></script>
-        <!-- third party js ends -->
-        
+    <!-- App js -->
+    <script src="{{ asset('public/backend/js/vendor.min.js') }}"></script>
+    <script src="{{ asset('public/backend/js/all.min.js') }}"></script>
+    <script src="{{ asset('public/backend/js/summernote-bs4.js') }}"></script>
 
-        <script src="{{ asset('public/backend/js/app.js') }}"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous">
+    </script>
+
+    <!-- toaster Js plugins  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 
-        @stack('add-js')
+    <!-- third party js -->
+    <script src="{{ asset('public/backend/js/vendor/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('public/backend/js/vendor/dataTables.bootstrap4.js') }}"></script>
+    <script src="{{ asset('public/backend/js/vendor/switchery.min.js') }}"></script>
+    <!-- third party js ends -->
 
-        {!! Toastr::message() !!}
 
-        <script type="text/javascript">
+    <script src="{{ asset('public/backend/js/app.js') }}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-            @if ($errors->any())
-                @foreach ($errors->all() as $error)
-                    toastr.error("{!! $error !!}");
-                @endforeach
-            @endif
-        </script>
 
-        <script>
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-        </script>
-    </body>
+    @stack('add-js')
+
+    {{-- {!! Toastr::message() !!}  --}}
+
+    <script type="text/javascript">
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                toastr.error("{!! $error !!}");
+            @endforeach
+        @endif
+    </script>
+
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    </script>
+</body>
+
 </html>
