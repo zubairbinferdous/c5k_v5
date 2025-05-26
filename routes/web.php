@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Admin\ArticleHtmlController;
 use App\Http\Controllers\Admin\BooksCategoryController;
 use App\Http\Controllers\Admin\BookListController;
+use App\Http\Controllers\Admin\IssueCOntroller;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -237,6 +238,9 @@ Route::group(['prefix' => 'dashboard/admin', 'middleware' => ['auth', 'isAdmin',
 
     // Profile Route
     Route::resource('profile', 'Admin\ProfileController');
+
+    // Issue Route
+    Route::resource('issues', 'Admin\IssueCOntroller')->names('issues');
 
     // Setting Routes
     Route::get('setting', 'Admin\SettingController@index')->name('setting.index');

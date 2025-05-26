@@ -72,6 +72,13 @@
         </li>
 
         <li>
+            <a href="{{ route('issues.index') }}">
+                <span class="icon"><i class="fas fa-question-circle"></i></span>
+                <span> Issues </span>
+            </a>
+        </li>
+
+        <li>
             <a href="{{ URL::route('journal.index') }}">
                 <span class="icon"><i class="fas fa-journal-whills"></i></span>
                 <span> Journal </span>
@@ -157,7 +164,6 @@
         </li>
         @endcan
 
-
         @can('isAuthor')
         <li>
             <a href="{{ URL::route('author.article.index') }}">
@@ -166,12 +172,12 @@
             </a>
         </li>
 
-        <li>
+        {{-- <li>
             <a href="{{ URL::route('author.issue.index') }}">
                 <span class="icon"><i class="fas fa-question-circle"></i></span>
                 <span> Issues </span>
             </a>
-        </li>
+        </li> --}}
 
         <li>
             <a href="{{ URL::route('author.profile.index') }}">
