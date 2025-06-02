@@ -77,8 +77,9 @@ class PageController extends Controller
     }
     public function blog_details($id)
     {
+        $all_blogs = Blog::orderBy('id', 'desc')->limit(10)->get();
         $blogs = Blog::findOrFail($id);
-        return view('pages.blog_details', compact('blogs'));
+        return view('pages.blog_details', compact('blogs', 'all_blogs'));
     }
 
     public function current_issue($id)
