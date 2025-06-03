@@ -229,6 +229,7 @@
     <!-- Membership Section -->
 
 
+     <!-- Latest Blogs Section -->
     <section class="py-12 bg-gray-100 text-center">
         <h2 class="text-3xl font-bold mb-8">Latest Blogs</h2>
         <div class="max-w-7xl mx-auto grid gap-6 md:grid-cols-3 px-4">

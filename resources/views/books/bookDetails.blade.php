@@ -23,7 +23,8 @@
             <div class="flex flex-wrap gap-4 mt-4">
                 <a href="#" class="bg-yellow-300 font-serif text-lg font-semibold text-center py-4 px-4 rounded w-1/3">Buy this Book</a>
                 <a href="#" class="bg-sky-600 text-white text-lg font-semibold text-center py-4 px-4 rounded w-1/3">Cite</a>
-                <a href="#" class="bg-yellow-300 text-lg font-semibold text-center py-4 px-4 rounded w-1/3">Contact Us</a>
+                <a href="#" class="bg-sky-300 text-lg font-semibold text-center py-4 px-4 rounded w-1/3">Contact Us</a>
+                <a href="#" class="bg-yellow-300 text-lg font-semibold text-center py-4 px-4 rounded w-1/3">Download Full PDF</a>
             </div>
         </div>
     </div>

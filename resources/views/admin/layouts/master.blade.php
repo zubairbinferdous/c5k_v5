@@ -31,10 +31,6 @@
     <link href="{{ asset('publicbackend/css/summernote-bs4.css') }}" rel="stylesheet" type="text/css" />
 
 
-    <!-- third party css -->
-    <link href="{{ asset('publicbackend/css/vendor/dataTables.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('publicbackend/css/vendor/switchery.min.css') }}" rel="stylesheet" type="text/css" />
-    <!-- third party css end -->
 
     <!-- Sweet Alert Message -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -42,7 +38,6 @@
     <!-- toaster css plugin -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
-    <link href="{{ asset('publicbackend/css/app.css') }}" rel="stylesheet" type="text/css" />
 
     @stack('add-css')
 
