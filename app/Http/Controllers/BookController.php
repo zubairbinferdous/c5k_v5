@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\BookFrontMatter;
 use Illuminate\Support\Facades\DB;
 
 class bookController extends Controller
@@ -39,8 +40,12 @@ class bookController extends Controller
         ->where('book_id', $id)
         ->get();
 
-        $forntMatter = DB::table('books_front_matter')
+        // $forntMatter = DB::table('books_front_matter')
+        // ->where('book_id', $id)
+        // ->get();
+        $forntMatter = BookFrontMatter::leftJoin('book_list', 'book_list.id', '=', 'books_front_matter.book_id')
         ->where('book_id', $id)
+        ->select('books_front_matter.*', 'book_list.name as book_name')
         ->get();
 
     if (!$book) {

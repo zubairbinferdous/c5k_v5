@@ -13,6 +13,5 @@ class BlogBanner extends Model
         'blog_banner',
         'first_heading',
         'heading_two',
-
     ];
 }

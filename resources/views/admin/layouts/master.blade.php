@@ -24,14 +24,14 @@
         {{-- <link href="{{ asset('publicbackend/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" /> --}}
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
-        <link href="{{ asset('public/backend/css/all.min.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('public/backend/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('public/backend/css/summernote-bs4.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('backend/css/all.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('backend/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('backend/css/summernote-bs4.css') }}" rel="stylesheet" type="text/css" />
         
 
         <!-- third party css -->
-        <link href="{{ asset('public/backend/css/vendor/dataTables.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('public/backend/css/vendor/switchery.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('backend/css/vendor/dataTables.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('backend/css/vendor/switchery.min.css') }}" rel="stylesheet" type="text/css" />
         <!-- third party css end -->
 
          <!-- Sweet Alert Message -->
@@ -40,7 +40,7 @@
          <!-- toaster css plugin -->
          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
-        <link href="{{ asset('public/backend/css/app.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('backend/css/app.css') }}" rel="stylesheet" type="text/css" />
 
         @stack('add-css')
 
@@ -104,7 +104,7 @@
                             <li class="dropdown notification-list">
                                 <a class="nav-link dropdown-toggle nav-user mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                                     @if(isset(Auth::user()->image_path))
-                                    <img src="{{ asset('public/uploads/profile/'.Auth::user()->image_path) }}" onerror="this.onerror=null;this.src='/backend/images/users/user.png';" alt="user-image" class="rounded-circle">
+                                    <img src="{{ asset('uploads/profile/'.Auth::user()->image_path) }}" onerror="this.onerror=null;this.src='/backend/images/users/user.png';" alt="user-image" class="rounded-circle">
                                     @else
                                     <img src="{{ asset('/backend/images/users/user.png') }}" alt="user-image" class="rounded-circle">
                                     @endif
@@ -212,9 +212,9 @@
 
 
         <!-- App js -->
-        <script src="{{ asset('public/backend/js/vendor.min.js') }}"></script>
-        <script src="{{ asset('public/backend/js/all.min.js') }}"></script>
-        <script src="{{ asset('public/backend/js/summernote-bs4.js') }}"></script>
+        <script src="{{ asset('backend/js/vendor.min.js') }}"></script>
+        <script src="{{ asset('backend/js/all.min.js') }}"></script>
+        <script src="{{ asset('backend/js/summernote-bs4.js') }}"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 
@@ -223,13 +223,13 @@
 
 
         <!-- third party js -->
-        <script src="{{ asset('public/backend/js/vendor/jquery.dataTables.js') }}"></script>
-        <script src="{{ asset('public/backend/js/vendor/dataTables.bootstrap4.js') }}"></script>
-        <script src="{{ asset('public/backend/js/vendor/switchery.min.js') }}"></script>
+        <script src="{{ asset('backend/js/vendor/jquery.dataTables.js') }}"></script>
+        <script src="{{ asset('backend/js/vendor/dataTables.bootstrap4.js') }}"></script>
+        <script src="{{ asset('backend/js/vendor/switchery.min.js') }}"></script>
         <!-- third party js ends -->
         
 
-        <script src="{{ asset('public/backend/js/app.js') }}"></script>
+        <script src="{{ asset('backend/js/app.js') }}"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 
