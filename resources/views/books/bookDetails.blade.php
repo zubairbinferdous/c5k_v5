@@ -80,7 +80,7 @@
             </a>
             <div class="mt-1 flex gap-4 text-blue-600">
                 <a href="#" class="text-lg">Summary</a>
-                <a href="{{ url('pdf_view') }}?file={{ $front->pdf_url }}" class="text-lg">PDF</a>
+                <a href="{{ asset( 'public/admin/books/' . $front->pdf_url) }}" class="text-lg" target="_blank">PDF</a>
             </div>
         </div>
         <hr>

@@ -52,6 +52,7 @@
             <ul class="nav-second-level" aria-expanded="false">
                 <li>
                     <a href="{{ URL::route('books.category.index') }}">Books Category</a>
+                    <a href="{{ URL::route('book.front-matter.index') }}">Books Front Matter</a>
                     <a href="{{ URL::route('book.list.index') }}">Books List</a>
                 </li>
             </ul>

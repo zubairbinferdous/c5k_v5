@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Admin\ArticleHtmlController;
+use App\Http\Controllers\Admin\BookFrontMatterController;
 use App\Http\Controllers\Admin\BooksCategoryController;
 use App\Http\Controllers\Admin\BookListController;
 use App\Http\Controllers\Admin\IssueCOntroller;
@@ -227,6 +228,9 @@ Route::group(['prefix' => 'dashboard/admin', 'middleware' => ['auth', 'isAdmin',
 
     // Books List
     Route::resource('book-list', BookListController::class)->names('book.list');
+
+    // Books Front Matter
+    Route::resource('book-front-matter', BookFrontMatterController::class)->names('book.front-matter');
 
     // Other Routes
     Route::resource('requirement', 'Admin\RequirementController');

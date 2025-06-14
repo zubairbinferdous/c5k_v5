@@ -26,17 +26,33 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
+<<<<<<< HEAD
+        <link href="{{ asset('backend/css/all.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('backend/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('backend/css/summernote-bs4.css') }}" rel="stylesheet" type="text/css" />
+        
+
+        <!-- third party css -->
+        <link href="{{ asset('backend/css/vendor/dataTables.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('backend/css/vendor/switchery.min.css') }}" rel="stylesheet" type="text/css" />
+        <!-- third party css end -->
+=======
     <link href="{{ asset('publicbackend/css/all.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('publicbackend/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('publicbackend/css/summernote-bs4.css') }}" rel="stylesheet" type="text/css" />
 
+>>>>>>> e62b6e30e0364f8b3d349fc684df17fbd359bbd0
 
 
     <!-- Sweet Alert Message -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<<<<<<< HEAD
+        <link href="{{ asset('backend/css/app.css') }}" rel="stylesheet" type="text/css" />
+=======
     <!-- toaster css plugin -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+>>>>>>> e62b6e30e0364f8b3d349fc684df17fbd359bbd0
 
 
     @stack('add-css')
@@ -98,12 +114,18 @@
                             @endif
                         @else
                             <li class="dropdown notification-list">
+<<<<<<< HEAD
+                                <a class="nav-link dropdown-toggle nav-user mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                    @if(isset(Auth::user()->image_path))
+                                    <img src="{{ asset('uploads/profile/'.Auth::user()->image_path) }}" onerror="this.onerror=null;this.src='/backend/images/users/user.png';" alt="user-image" class="rounded-circle">
+=======
                                 <a class="nav-link dropdown-toggle nav-user mr-0" data-toggle="dropdown" href="#"
                                     role="button" aria-haspopup="false" aria-expanded="false">
                                     @if (isset(Auth::user()->image_path))
                                         <img src="{{ asset('public/uploads/profile/' . Auth::user()->image_path) }}"
                                             onerror="this.onerror=null;this.src='/backend/images/users/user.png';"
                                             alt="user-image" class="rounded-circle">
+>>>>>>> e62b6e30e0364f8b3d349fc684df17fbd359bbd0
                                     @else
                                         <img src="{{ asset('/backend/images/users/user.png') }}" alt="user-image"
                                             class="rounded-circle">
